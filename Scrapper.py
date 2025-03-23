@@ -55,10 +55,7 @@ def extract_table_csv():
     df = pd.DataFrame(rows)
     df.to_csv("extracted_table.csv", index=False)
     
-    # Save structured data to MongoDB
-    if rows:
-        collection.insert_many(rows)
-    print("Data saved to MongoDB and CSV.")
+   
 
 
 def solve_captcha():
@@ -195,13 +192,14 @@ headers = {
 solved_Captcha = solve_captcha()
 solved_Captcha =str(solved_Captcha).replace('/','')
 
+# Enter values for the selected categories
 district_code="1"
 tehsil_code="1"
 sro_code="1"
 doc_type="17"
 doc_number="5"
 # encoded_view_state, encoded_VIEWSTATEGENERATOR, encoded_EVENTVALIDATION = get_hidden_fields_and_captcha()
-# Body (Paste your raw body data here)
+
 body = f"ctl00%24ScriptManager1=ctl00%24upContent%7Cctl00%24ContentPlaceHolder1%24btnsummary&ScriptManager1_HiddenField=&ctl00%24ContentPlaceHolder1%24a=rbtrural&ctl00%24ContentPlaceHolder1%24ddlDistrict={district_code}&ctl00%24ContentPlaceHolder1%24ddlTehsil={tehsil_code}&ctl00%24ContentPlaceHolder1%24ddlSRO={sro_code}&ctl00%24ContentPlaceHolder1%24ddlcolony=-Select-&ctl00%24ContentPlaceHolder1%24ddldocument={doc_type}&ctl00%24ContentPlaceHolder1%24txtexcutent=&ctl00%24ContentPlaceHolder1%24txtclaiment={doc_number}{remaining_body}"
 
 
@@ -214,4 +212,4 @@ print(f"Status Code: {response.status_code}")
 
 # Extract and save structured table data
 extract_table()
-# extract_table_csv()
+extract_table_csv()
