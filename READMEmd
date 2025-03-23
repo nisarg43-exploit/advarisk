@@ -53,6 +53,6 @@ brew services start mongodb/brew/mongodb-community
 ## Running the Script
 After installing all dependencies, execute the script:
 ```sh
-python cleaned_script.py
+python Scrapper.py
 ```
 
